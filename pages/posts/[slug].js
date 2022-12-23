@@ -34,7 +34,7 @@ export async function getStaticPaths(){
     const paths = files.map((file) => {
         return {
             params:{
-                slug:file.replace("mdx")
+                slug:file.replace("mdx","")
             }
         }
     });
@@ -45,7 +45,7 @@ export async function getStaticPaths(){
 }
 
 export async function getStaticProps({params:{slug}}){
-    const fileData = fs.readFileSync(path.join("posts",slug+'.mdx'),'utf-8');
+    const fileData = fs.readFileSync(path.join("posts",slug+'.mdx'));
     const {data,content} = matter(fileData);
     const mdxSource = await serialize(content);
     return {
