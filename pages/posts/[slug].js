@@ -30,7 +30,7 @@ export default function Post(props) {
 
 
 export async function getStaticPaths(){
-    const files = fs.readdirSync(path.join("posts"));
+    const files = fs.readdirSync("posts");
     const paths = files.map((file) => {
         return {
             params:{
